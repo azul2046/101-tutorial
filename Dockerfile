@@ -30,7 +30,6 @@ CMD ["mkdocs", "serve", "-a", "0.0.0.0:8000", "-f", "/mkdocs-configured.yml"]
 FROM base AS build
 COPY . .
 COPY --from=mkdoc-config-builder /app/mkdocs-configured.yml ./mkdocs.yml
-ARG LANGUAGE
 RUN mkdocs build
 
 # Extract the static content from the build
