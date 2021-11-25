@@ -31,11 +31,10 @@ FROM base AS build
 COPY . .
 COPY --from=mkdoc-config-builder /app/mkdocs-configured.yml ./mkdocs.yml
 ARG LANGUAGE
-RUN mv docs_${LANGUAGE} docs
 RUN mkdocs build
 
 # Extract the static content from the build
 # and use a nginx image to serve the content
-FROM nginx:alpine
+FROM nginx:alpine AS prod
 COPY --from=app-zip-creator /app.zip /usr/share/nginx/html/assets/app.zip
 COPY --from=build /app/site /usr/share/nginx/html
