@@ -18,7 +18,7 @@ with containers. While not going too much into depth, it covers the following to
 If you wish to run the tutorial, you can use the following command:
 
 ```bash
-docker run -dp 80:80 dockersamples/101-tutorial
+docker run -it -dp 80:80 dockersamples/101-tutorial
 ```
 
 Once it has started, you can open your browser to [http://localhost](http://localhost) or
